@@ -1,0 +1,34 @@
+Tamb!~@~kali[¬]:~/ids-ml-projet $ python3 -c "
+import pandas as pd
+d = pd.read_parquet('data/processed/cicids2017_clean.parquet')
+print(d.shape)
+print(d['Label'].value_counts())
+print(d.groupby('source_file')['is_attack'].agg(['size','mean']).round(3))
+"
+(2498078, 67)
+Label
+BENIGN                            2072337
+DoS Hulk                           172846
+DDoS                               128014
+PortScan                            90694
+DoS GoldenEye                       10286
+FTP-Patator                          5931
+DoS slowloris                        5385
+DoS Slowhttptest                     5228
+SSH-Patator                          3219
+Bot                                  1948
+Web Attack - - - Brute Force         1470
+Web Attack - - - XSS                  652
+Infiltration                           36
+Web Attack - - - Sql Injection         21
+Heartbleed                             11
+Name: count, dtype: int64
+               size   mean
+source_file               
+Friday       615387  0.359
+Monday       492670  0.000
+Thursday     396935  0.005
+Tuesday      406475  0.023
+Wednesday    586611  0.330
+Tamb!~@~kali[¬]:~/ids-ml-projet $ 
+

@@ -1,0 +1,30 @@
+ids-ml-projet/
+├── README.md                 présentation, démarrage, règles du projet
+├── requirements.txt
+├── .gitignore                exclut les données et les modèles
+│
+├── data/
+│   ├── raw/MachineLearningCVE/    les 8 CSV CICIDS2017 (à télécharger, jamais modifiés)
+│   ├── processed/                 cicids2017_clean.parquet, cicids2017_sample.parquet
+│   └── demo/                      CSV de démonstration pour l'app
+│
+├── notebooks/                à exécuter dans l'ordre
+│   ├── 01_nsl_kdd_demarrage.ipynb
+│   ├── 02_cicids2017_chargement_nettoyage.ipynb
+│   └── 03_cicids2017_modelisation.ipynb
+│
+├── models/                   créés par le notebook 03
+│   ├── ids_model.joblib           détection normal / attaque
+│   └── ids_family_model.joblib    famille d'attaque probable
+│
+├── app/
+│   ├── app.py                     démo Streamlit
+│   └── make_demo_csv.py
+│
+├── reports/
+│   ├── figures/                   graphiques exportés pour le mémoire
+│   └── resultats/                 tableaux de résultats
+│
+└── docs/
+    ├── plan_memoire.md            les 7 chapitres reliés au code
+    ├── memoire/   soutenance/   references/

@@ -1,0 +1,141 @@
+[cellule 4]
+(2498078, 67) | 63 caractéristiques
+
+[cellule 4]
+source_file                     Friday  Monday  Thursday  Tuesday  Wednesday
+Label                                                                       
+BENIGN                          394731  492670    394756   397325     392855
+Bot                               1948       0         0        0          0
+DDoS                            128014       0         0        0          0
+DoS GoldenEye                        0       0         0        0      10286
+DoS Hulk                             0       0         0        0     172846
+DoS Slowhttptest                     0       0         0        0       5228
+DoS slowloris                        0       0         0        0       5385
+FTP-Patator                          0       0         0     5931          0
+Heartbleed                           0       0         0        0         11
+Infiltration                         0       0        36        0          0
+PortScan                         90694       0         0        0          0
+SSH-Patator                          0       0         0     3219          0
+Web Attack - - - Brute Force         0       0      1470        0          0
+Web Attack - - - Sql Injection       0       0        21        0          0
+Web Attack - - - XSS                 0       0       652        0          0
+[cellule 9]
+[A : aléatoire] train=377,027 (73.5% attaques) | test=749,424 (17.0% attaques)
+
+[cellule 9]
+                       precision  rappel      f1  pr_auc  faux_positifs  \
+modele                                                                    
+Régression logistique     0.7320  0.9734  0.8356  0.9387          45526   
+Arbre de décision         0.9903  0.9995  0.9949  0.9912           1250   
+Random Forest             0.9925  0.9994  0.9959  0.9972            970   
+Isolation Forest          0.7995  0.3750  0.5105  0.5109          12011   
+
+                       faux_negatifs  t_fit_s  t_pred_s  
+modele                                                   
+Régression logistique           3401  12.4274    0.2707  
+Arbre de décision                 65  10.1987    0.0885  
+Random Forest                     81  39.5116    3.1178  
+Isolation Forest               79829   1.9270   13.0223  
+[cellule 11]
+Attaques du test ABSENTES de l'entraînement : ['Bot', 'DDoS', 'PortScan']
+
+[cellule 11]
+[B : par jour] train=232,239 (56.9% attaques) | test=615,387 (35.9% attaques)
+
+[cellule 11]
+                       precision  rappel      f1  pr_auc  faux_positifs  \
+modele                                                                    
+Régression logistique     0.9012  0.6008  0.7209  0.7837          14530   
+Arbre de décision         0.9646  0.5307  0.6847  0.6803           4292   
+Random Forest             0.9939  0.3708  0.5402  0.7680            499   
+Isolation Forest          0.5705  0.0975  0.1666  0.4832          16200   
+
+                       faux_negatifs  t_fit_s  t_pred_s  
+modele                                                   
+Régression logistique          88096   9.7334    0.2477  
+Arbre de décision             103561   6.9105    0.0613  
+Random Forest                 138826  23.5867    1.7680  
+Isolation Forest              199136   3.5664    9.0908  
+[cellule 13]
+                                 f1                     rappel               \
+protocole             A : aléatoire B : par jour A : aléatoire B : par jour   
+modele                                                                        
+Arbre de décision             0.995        0.685         0.999        0.531   
+Isolation Forest              0.511        0.167         0.375        0.098   
+Random Forest                 0.996        0.540         0.999        0.371   
+Régression logistique         0.836        0.721         0.973        0.601   
+
+                          precision               
+protocole             A : aléatoire B : par jour  
+modele                                            
+Arbre de décision             0.990        0.965  
+Isolation Forest              0.799        0.571  
+Random Forest                 0.992        0.994  
+Régression logistique         0.732        0.901  
+[cellule 16]
+--- Protocole A : rappel par attaque (Random Forest) ---
+Label
+Infiltration                      0.545
+Web Attack - - - Sql Injection    0.833
+Bot                               0.961
+Web Attack - - - XSS              0.990
+Web Attack - - - Brute Force      0.998
+PortScan                          0.999
+DoS GoldenEye                     0.999
+DoS slowloris                     0.999
+DoS Hulk                          1.000
+DDoS                              1.000
+DoS Slowhttptest                  1.000
+FTP-Patator                       1.000
+Heartbleed                        1.000
+SSH-Patator                       1.000
+
+--- Protocole B : rappel par attaque (Random Forest) ---
+
+[cellule 16]
+Label
+Bot         0.000
+PortScan    0.006
+DDoS        0.635
+
+
+[cellule 24]
+family
+DoS/DDoS        321770
+PortScan         90694
+BruteForce        9150
+WebAttack         2143
+Botnet            1948
+Infiltration        36
+
+[cellule 24]
+
+
+[cellule 24]
+              precision    recall  f1-score   support
+
+      Botnet       1.00      1.00      1.00       584
+  BruteForce       1.00      1.00      1.00      2745
+    DoS/DDoS       1.00      1.00      1.00     96532
+Infiltration       1.00      0.73      0.84        11
+    PortScan       1.00      1.00      1.00     27208
+   WebAttack       0.99      0.99      0.99       643
+
+    accuracy                           1.00    127723
+   macro avg       1.00      0.95      0.97    127723
+weighted avg       1.00      1.00      1.00    127723
+
+
+[cellule 27]
+Attaques détectées par l'étage 1 : 127,641
+Famille correcte (toutes)               : 100.0%
+Part avec confiance >= 60%             : 100.0%
+Famille correcte si confiance >= 60%   : 100.0%
+Famille correcte si confiance <  60%   : 35.7%  <- à vérifier par un analyste
+
+[cellule 29]
+Sauvegardé : ../models/ids_family_model.joblib | familles : ['Botnet', 'BruteForce', 'DoS/DDoS', 'Infiltration', 'PortScan', 'WebAttack']
+
+[cellule 31]
+Meilleur F1 en protocole B : Régression logistique
+Sauvegardé : ../models/ids_model.joblib
